@@ -1,0 +1,20 @@
+#!/bin/bash
+
+asdf install
+
+root_dir=$(dirname $(dirname "$0"))
+env_file="$root_dir/.env"
+
+if grep --quiet "AOC_SESSION=" .env
+then
+  echo "AOC_SESSION environment variable set"
+else
+  echo "Grab the session cookie from a logged in adventofcode.com tab"
+  read -p "adventofcode.com session=" aoc_session
+  echo "AOC_SESSION=$aoc_session" >> .env
+fi
+
+echo
+echo "All good. Try:"
+echo "  $ ./aoc.rb 1"
+cd $root_dir
