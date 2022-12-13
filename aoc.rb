@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
+require 'dotenv/load'
 require './lib/aoc_helper'
 require './lib/day'
 

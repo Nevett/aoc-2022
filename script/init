@@ -1,17 +1,19 @@
 #!/bin/bash
 
 asdf install
+bundle install
 
 root_dir=$(dirname $(dirname "$0"))
 env_file="$root_dir/.env"
 
+touch $env_file
 if grep --quiet "AOC_SESSION=" .env
 then
   echo "AOC_SESSION environment variable set"
 else
   echo "Grab the session cookie from a logged in adventofcode.com tab"
   read -p "adventofcode.com session=" aoc_session
-  echo "AOC_SESSION=$aoc_session" >> .env
+  echo "AOC_SESSION=$aoc_session" >> $env_file
 fi
 
 echo
